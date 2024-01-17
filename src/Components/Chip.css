@@ -1,0 +1,66 @@
+body{
+  background-color: rgb(203, 236, 203);
+}
+.box-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .box {
+    padding: 4px;
+    height: 400px;
+    overflow: auto;
+    background-color: rgb(203, 236, 203);
+    box-shadow: -3px -3px 7px white,
+    3px 3px 5px black;
+  }
+  
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .chip {
+    padding: 4px 8px;
+    margin-left: 4px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    box-shadow: -3px -3px 7px white,
+    3px 3px 5px black;
+  }
+  
+  .chip-remove {
+    cursor: pointer;
+    margin-left: 4px;
+    font-weight: bold;
+  }
+  
+  .input {
+    padding: 4px;
+    border: none;
+    border-radius: 50px;
+    background-color: rgb(203, 236, 203);
+  }
+  
+  .item-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .item {
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .item:hover {
+    background-color: #edf2f7;
+    border-radius: 20%;
+    box-shadow: -3px -3px 7px white,
+    3px 3px 5px black;
+  }
