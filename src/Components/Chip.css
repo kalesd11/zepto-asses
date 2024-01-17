@@ -16,12 +16,13 @@ body{
     background-color: rgb(203, 236, 203);
     box-shadow: -3px -3px 7px white,
     3px 3px 5px black;
+    transition: .3s;
   }
   
   .chips {
     display: flex;
     flex-wrap: wrap;
-    row-gap: 4px;
+    row-gap: 8px;
     margin-bottom: 10px;
   }
   
@@ -43,11 +44,14 @@ body{
   
   .input {
     padding: 4px;
-    border: none;
-    border-radius: 50px;
+    outline: none;
     background-color: rgb(203, 236, 203);
   }
-  
+
+  .input:focus{
+    border-bottom: 2px solid rgb(107, 43, 226);
+  }
+
   .item-list {
     display: flex;
     flex-direction: column;

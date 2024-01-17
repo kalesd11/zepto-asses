@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Avatar from 'react-avatar';
+import Avatar from "react-avatar";
 import "./Chip.css";
 
 const Chips = () => {
@@ -27,7 +27,7 @@ const Chips = () => {
     setChips([...chips, item]);
     setusers(users.filter((i) => i !== item));
     setsearchName("");
-    setbackCount(0)
+    setbackCount(0);
   };
 
   const handleChipRemove = (chip) => {
@@ -45,7 +45,7 @@ const Chips = () => {
   const handleBack = (e) => {
     if (e.key === "Backspace") {
       console.log("Backspace key pressed");
-      if (searchName.length === 0) {
+      if (searchName.length === 0 && chips.length ) {
         if (backCount === 1) {
           handleChipRemove(chips[chips.length - 1]);
           setbackCount(0);
@@ -64,11 +64,23 @@ const Chips = () => {
             <div
               key={index}
               className={`chip text-white font-bold bg-green-400  ${
-                backCount === 1 && index === chips.length - 1 ? "bg-red-500" : ""
+                backCount === 1 && index === chips.length - 1
+                  ? "bg-red-500"
+                  : ""
               }`}
             >
               {/* <Avatar googleId="118096717852922241760" className='mr-2' size="20" round={true} /> */}
-              <Avatar facebookId="100008343750912" size="20" round/>
+              <Avatar
+                facebookId="100008343750912"
+                color={Avatar.getRandomColor("sitebase", [
+                  "red",
+                  "green",
+                  "blue",
+                ])}
+                size="20"
+                round
+              />
+              {/* <Avatar color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])} name="Wim Mostmans" /> */}
               {chip[0]}
               <span
                 className="chip-remove"
@@ -85,7 +97,7 @@ const Chips = () => {
             onFocus={handleFocus}
             onKeyDown={handleBack}
             placeholder="Type to search"
-            className="input rounded-md mx-2 gap-2"
+            className="input mx-2 gap-2"
           />
         </div>
 
@@ -102,6 +114,12 @@ const Chips = () => {
                   className="item"
                   onClick={() => handleItemClick(item)}
                 >
+                  <Avatar
+                    className="mx-2"
+                    facebookId="100008343750912"
+                    size="20"
+                    round
+                  />
                   {item[0]} <span className="font-light mx-2">{item[1]}</span>
                 </div>
               ))}
@@ -113,9 +131,15 @@ const Chips = () => {
                   return (
                     <div
                       key={Math.random()}
-                      className="item"
+                      className="item mb-2"
                       onClick={() => handleItemClick(item)}
                     >
+                      <Avatar
+                        className="mx-2"
+                        facebookId="100008343750912"
+                        size="20"
+                        round
+                      />
                       {item[0]}{" "}
                       <span className="font-light mx-2">{item[1]}</span>
                     </div>
