@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import Avatar from 'react-avatar';
 import "./Chip.css";
 
 const Chips = () => {
   const [searchName, setsearchName] = useState("");
   const [chips, setChips] = useState([]);
   const [focus, setFocus] = useState(false);
+  const [backCount, setbackCount] = useState(0);
   const [users, setusers] = useState([
     ["Nick Gian", "NickGian@email.com"],
     ["Narayan Gamer", "NarayanGamer@email.com"],
@@ -25,6 +27,7 @@ const Chips = () => {
     setChips([...chips, item]);
     setusers(users.filter((i) => i !== item));
     setsearchName("");
+    setbackCount(0)
   };
 
   const handleChipRemove = (chip) => {
@@ -33,10 +36,23 @@ const Chips = () => {
   };
 
   const handleFocus = () => {
-    if (searchName.length == 0) {
+    if (searchName.length === 0) {
       setFocus(true);
     } else {
       setFocus(false);
+    }
+  };
+  const handleBack = (e) => {
+    if (e.key === "Backspace") {
+      console.log("Backspace key pressed");
+      if (searchName.length === 0) {
+        if (backCount === 1) {
+          handleChipRemove(chips[chips.length - 1]);
+          setbackCount(0);
+        } else {
+          setbackCount(1);
+        }
+      }
     }
   };
   return (
@@ -45,7 +61,14 @@ const Chips = () => {
         {/* Chips Building */}
         <div className="chips px-8 pt-4">
           {chips.map((chip, index) => (
-            <div key={index} className="chip text-white font-bold bg-green-400">
+            <div
+              key={index}
+              className={`chip text-white font-bold bg-green-400  ${
+                backCount === 1 && index === chips.length - 1 ? "bg-red-500" : ""
+              }`}
+            >
+              {/* <Avatar googleId="118096717852922241760" className='mr-2' size="20" round={true} /> */}
+              <Avatar facebookId="100008343750912" size="20" round/>
               {chip[0]}
               <span
                 className="chip-remove"
@@ -60,6 +83,7 @@ const Chips = () => {
             value={searchName}
             onChange={handleInputChange}
             onFocus={handleFocus}
+            onKeyDown={handleBack}
             placeholder="Type to search"
             className="input rounded-md mx-2 gap-2"
           />
@@ -92,7 +116,8 @@ const Chips = () => {
                       className="item"
                       onClick={() => handleItemClick(item)}
                     >
-                      {item[0]} <span className="font-light mx-2">{item[1]}</span>
+                      {item[0]}{" "}
+                      <span className="font-light mx-2">{item[1]}</span>
                     </div>
                   );
                 })

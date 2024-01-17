@@ -11,6 +11,7 @@ body{
   .box {
     padding: 4px;
     height: 400px;
+    width: 500px;
     overflow: auto;
     background-color: rgb(203, 236, 203);
     box-shadow: -3px -3px 7px white,
@@ -59,8 +60,8 @@ body{
   }
   
   .item:hover {
-    background-color: #edf2f7;
-    border-radius: 20%;
+    background-color: rgb(203, 236, 203);
+    border-radius: 50%;
     box-shadow: -3px -3px 7px white,
     3px 3px 5px black;
   }
