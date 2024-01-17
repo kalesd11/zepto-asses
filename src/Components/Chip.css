@@ -11,7 +11,7 @@ body{
   .box {
     padding: 4px;
     height: 400px;
-    width: 500px;
+    width: 600px;
     overflow: auto;
     background-color: rgb(203, 236, 203);
     box-shadow: -3px -3px 7px white,
